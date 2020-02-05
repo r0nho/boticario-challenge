@@ -1,0 +1,100 @@
+{
+    "name": "freightHub-romulo",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+        "@material-ui/core": "^4.9.1",
+        "@material-ui/icons": "^4.9.1",
+        "@types/jest": "24.0.22",
+        "@types/node": "12.12.6",
+        "@types/react": "16.9.11",
+        "@types/react-addons-css-transition-group": "^15.0.5",
+        "@types/react-dom": "16.9.3",
+        "@types/react-redux": "^7.1.5",
+        "@types/react-router-dom": "^5.1.2",
+        "@types/react-text-mask": "^5.4.6",
+        "@types/styled-components": "^4.4.0",
+        "@types/underscore": "^1.9.4",
+        "axios": "^0.19.0",
+        "babel-plugin-root-import": "^6.4.1",
+        "connected-react-router": "^6.5.2",
+        "customize-cra": "^0.8.0",
+        "history": "^4.10.1",
+        "install": "^0.13.0",
+        "json-server": "^0.14.2",
+        "moment": "^2.24.0",
+        "node-sass": "^4.13.0",
+        "npm": "^6.13.0",
+        "react": "^16.11.0",
+        "react-addons-css-transition-group": "^15.6.2",
+        "react-app-rewired": "^2.1.5",
+        "react-dom": "^16.11.0",
+        "react-input-autosize": "^2.2.2",
+        "react-moment": "^0.9.6",
+        "react-pagination-js": "^2.0.0",
+        "react-redux": "^7.1.3",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "3.2.0",
+        "react-text-mask": "^5.4.3",
+        "react-transition-group": "^4.3.0",
+        "redux": "^4.0.4",
+        "redux-thunk": "^2.3.0",
+        "reduxsauce": "^1.1.1",
+        "reselect": "^4.0.0",
+        "styled-components": "^4.4.1",
+        "typescript": "3.7.2"
+    },
+    "scripts": {
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "eject": "react-scripts eject",
+        "test:unit": "react-app-rewired test --collect-coverage",
+        "lint": "tslint src/**/*.ts{,x}",
+        "lint:ts-fix": "tslint --fix 'src/**/*.ts?(x)' -t verbose",
+        "prettier:check": "prettier --check \"./src/**/*.{json,ts,tsx,js}\"",
+        "prettier:fix": "prettier --write \"./src/**/*.{json,ts,tsx,js}\"",
+        "server": "json-server db.json --port 3004"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "jest": {
+        "setupFilesAfterEnv": [
+            "jest-enzyme"
+        ],
+        "testEnvironment": "enzyme",
+        "testEnvironmentOptions": {
+            "enzymeAdapter": "react16"
+        }
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-enzyme": "^1.0.0-beta.1",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "jest-environment-enzyme": "^7.1.2",
+        "jest-enzyme": "^7.1.2",
+        "prettier": "^1.19.1",
+        "redux-mock-store": "^1.5.4",
+        "tslint": "^5.20.1",
+        "tslint-config-airbnb": "^5.11.2",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-plugin-prettier": "^2.0.1",
+        "tslint-react": "^4.1.0",
+        "underscore": "^1.9.2",
+        "webpack-bundle-analyzer": "^3.6.0"
+    }
+}

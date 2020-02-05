@@ -1,0 +1,33 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-react",
+        "tslint-config-airbnb",
+        "tslint-plugin-prettier",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "variable-name": {
+            "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+        },
+        "object-literal-sort-keys": [false],
+        "ban-types": [false],
+        "import-name": [false],
+        "jsx-no-lambda": [false],
+        "no-submodule-imports": [false],
+        "member-access": [true, "no-public"],
+        "interface-name": [true, "never-prefix"],
+        "function-name": [
+            true,
+            {
+                "method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+                "private-method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+                "protected-method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+                "static-method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+                "function-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$"
+            }
+        ],
+        "jsx-boolean-value": [true, "never"],
+        "no-empty-interface": [false]
+    }
+}
