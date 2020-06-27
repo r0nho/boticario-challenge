@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
      body {
         width: 100%;
-        height: auto;
+        height: 100%;
         position: relative;
         margin: 0;
         padding: 0 !important;
@@ -19,72 +19,29 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Roboto', Arial, sans-serif,
-            sans-serif;
+        font-family: 'MuseoModerno', cursive;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .heading {
-        font-size: 30px;
-        padding: 0 10px;
-    }
-
-    .active {
-        background: #FFD300 !important;
-    }
-
-    .completed {
-        background: #00A400 !important;
-    }
-
-    .canceled {
-        background: #FF3333 !important;
-    }
-
-    .chip {
-        min-width: 90px;
-        color: white;
+    #root {
+        height: 100%;
     }
 
     .blue {
         color: #0397d9;
     }
 
-    .green {
-        color: #00A400;
+    .primary {
+        color: #007e78;
     }
 
-    .red {
-        color: #FF5075;
-    }
-
-    .primary: {
-        color: #3D4451;
+    .accent {
+        color: #6f967e;
     }
 
     .white {
         color: white;
-    }
-
-    .react-pagination-js-border-bottom {
-        text-align: center;
-    }
-
-    .page {
-        font-size: 18px;
-    }
-
-    .react-pagination-js-border-bottom ul {
-        line-height: inherit !important;
-    }
-
-    body .react-pagination-js-border-bottom .is-active {
-        font-size: 15px;
-        border: 1px solid;
-        height: auto;
-        padding: 3px 7px;
-        margin: 15px 0;
     }
 
 `;
