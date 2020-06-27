@@ -1,12 +1,8 @@
-<p align="center"> <img src="./src/assets/images/logo.svg" width="250"></p>
+<p align="center"> <img src="./src/assets/images/logo.png" width="250"></p>
 
 <br />
 
 <div align="center">Rômulo Argolo Challenge :)</div>
-
-<br />
-
-[View demo (deployed with surge)](http://romulo-freight.surge.sh) <small>(open with server running local)</small>
 
 <br />
 
@@ -34,4 +30,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
-
