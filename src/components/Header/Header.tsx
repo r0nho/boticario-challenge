@@ -2,7 +2,7 @@ import React from 'react';
 import PersonIcon from '@material-ui/icons/Person';
 
 import { Heading, WrapHeader, WrapContainer } from './styles/';
-import Logo from 'assets/images/logo-white.svg';
+import Logo from 'assets/images/logo.png';
 
 const Header = ({ name }: { name: string }) => {
   return (

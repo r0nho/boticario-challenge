@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Login from 'containers/Login';
+import RegisterContainer from 'containers/Register';
 
 //Assets
 import Logo from 'assets/images/logo-white.svg';
@@ -8,7 +8,7 @@ import Logo from 'assets/images/logo-white.svg';
 // Styleds
 import { AppWrapper, CenteredDiv, StyledSVG } from './styles';
 
-const LoginPage = () => (
+const RegisterPage = () => (
   <AppWrapper>
     <CenteredDiv>
       <StyledSVG>
@@ -35,9 +35,9 @@ const LoginPage = () => (
       </StyledSVG>
       <img src={Logo} alt="Logo O Boticario" title="Logo O Boticario" />
 
-      <Login />
+      <RegisterContainer />
     </CenteredDiv>
   </AppWrapper>
 );
 
-export default LoginPage;
+export default RegisterPage;

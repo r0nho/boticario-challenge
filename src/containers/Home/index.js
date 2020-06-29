@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Creators } from '../../store/modules/login';
+import { Creators } from '../../store/modules/auth';
 
 import Home from './Home';
 

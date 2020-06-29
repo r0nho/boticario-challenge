@@ -2,7 +2,7 @@ import { createStyles } from '@material-ui/core/styles';
 
 export const materialStyles = createStyles((theme: any) => ({
   root: {
-    maxWidth: 300,
+    maxWidth: 600,
     width: '100%',
     minHeight: 350,
 
@@ -32,7 +32,7 @@ export const materialStyles = createStyles((theme: any) => ({
 
   inputs: {
     margin: '15px 0',
-    width: '100%',
+    width: '90%',
 
     '& label': {
       fontSize: 14,
@@ -64,6 +64,7 @@ export const materialStyles = createStyles((theme: any) => ({
     width: 180,
     fontSize: 13,
     padding: 10,
+    margin: '20px 0',
   },
 
   link: {
@@ -72,12 +73,22 @@ export const materialStyles = createStyles((theme: any) => ({
     fontSize: 16,
     cursor: 'pointer',
     margin: '5px 0 20px',
-    textDecoration: 'none',
-    transition: 'all 0.2 ease-in-out',
+  },
 
-    '&:hover': {
-      textDecoration: 'underline',
-      transition: 'all 0.2 ease-in-out',
-    },
+  successText: {
+    position: 'relative',
+    top: '-120px',
+    fontSize: '25px !important',
+    fontWeight: '500 !important',
+  },
+
+  buttonSuccess: {
+    borderRadius: 15,
+    width: 180,
+    fontSize: 13,
+    padding: 10,
+    margin: '20px 0',
+    position: 'relative',
+    top: '-110px',
   },
 }));
