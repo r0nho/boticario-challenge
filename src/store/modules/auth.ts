@@ -1,6 +1,8 @@
 import { push } from 'connected-react-router';
+
 import { createActions, createReducer } from 'reduxsauce';
 import { authenticateUser, registerUser } from '../../services/auth';
+import { Types as TypesUser } from './user';
 
 /**
  * Interfaces
@@ -29,20 +31,17 @@ export const login = (payload: object) => {
 
     authenticateUser(payload)
       .then(res => {
-        console.log(res);
-        // const authPayload = {
-        //   token: res.detail.token,
-        //   isAdmin: res.detail.admin,
-        // };
+        const { token } = res;
 
-        // window.localStorage.setItem('auth', JSON.stringify(authPayload));
+        dispatch({
+          token,
+          type: TypesUser.SET_TOKEN,
+        });
 
-        // if (res.token) {
-        //   dispatch(push('/dashboard'));
-        // }
+        push('/dashboard/home');
       })
-      .catch(({ response }: any) => {
-        console.log(response);
+      .catch((error: any) => {
+        console.log(error);
       })
       .finally(() => {
         dispatch({ type: Types.FETCHING, isFetching: false });
@@ -56,8 +55,13 @@ export const register = (payload: object) => {
 
     registerUser(payload)
       .then(res => {
-        console.log(res);
+        const { token } = res;
+
         dispatch({ type: Types.REGISTRED, response: true });
+        dispatch({
+          token,
+          type: TypesUser.SET_TOKEN,
+        });
       })
       .catch(({ response }: any) => {
         console.log(response);

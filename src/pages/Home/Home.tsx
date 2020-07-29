@@ -1,7 +1,15 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core';
 
-import Login from 'containers/Login';
+import MyPurchases from 'containers/MyPurchases';
 
-const Home = () => <Login />;
+import { materialStyles } from './styles/styles';
 
-export default Home;
+const Home = ({ classes }: any) => (
+  <Paper elevation={3} className={classes.container}>
+    <MyPurchases />
+  </Paper>
+);
+
+export default withStyles(materialStyles)(Home);

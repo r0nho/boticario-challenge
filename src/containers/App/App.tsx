@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import { withRouter } from 'react-router';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-import Header from 'components/Header';
-
-import { AppWrapper } from './styles';
-
 import { RoutersApp } from './../../routes';
 
-interface State {
-  validToken: boolean;
-  showSnackbar: boolean;
+import Sidebar from 'components/Sidebar';
+import { AppWrapper } from './styles';
+
+interface USER {
+  token: string;
+  name: string;
+  cpf: string;
+  email: string;
 }
 
-class App extends Component<any, State> {
+class App extends Component<any, any> {
   render() {
-    const { location } = this.props;
-    const hideHeader = location.pathname === '/login' || location.pathname === '/register';
+    const { location, user, setToken, unauthenticate } = this.props;
+    const token = window.localStorage.getItem('token');
+    const showSidebar = location.pathname === '/login' || location.pathname === '/register';
+
+    if (token && !user.token) setToken(token);
     return (
       <>
         <AppWrapper>
-          {!hideHeader && <Header name="Rômulo Argolo" />}
+          {!showSidebar && token ? <Sidebar user={user} logout={unauthenticate} /> : ''}
           <TransitionGroup className="main-group">
             <CSSTransition key={location.key} timeout={{ enter: 300, exit: 300 }} classNames={'fade'}>
               <RoutersApp />

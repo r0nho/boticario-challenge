@@ -23,8 +23,8 @@ export const AppWrapper = styled.main`
   }
 
   .fade-exit.fade-exit-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
+    opacity: 0;
+    transition: opacity 50ms ease-in;
   }
 `;
 
