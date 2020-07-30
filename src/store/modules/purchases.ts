@@ -23,7 +23,6 @@ export const getListPurchases = (payload: object) => {
 
     getPurchases()
       .then((res: { purchases: PURCHASE[] }) => {
-        console.log(res);
         dispatch({ type: Types.SET_PURCHASES, list: res.purchases });
       })
       .catch((error: any) => {
@@ -44,8 +43,6 @@ const INITIAL_STATE: PURCHASE = {
 };
 
 const setPurchaseList = (state: PURCHASE = INITIAL_STATE, action: any) => {
-  console.log(action);
-
   return {
     ...state,
     purchases: action.list,
@@ -55,7 +52,7 @@ const setPurchaseList = (state: PURCHASE = INITIAL_STATE, action: any) => {
 const setLoading = (state: PURCHASE = INITIAL_STATE, action: any) => {
   return {
     ...state,
-    loading: action.isFetching,
+    fetching: action.isFetching,
   };
 };
 

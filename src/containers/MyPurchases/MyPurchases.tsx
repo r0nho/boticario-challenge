@@ -20,28 +20,6 @@ import { materialStyles } from './styles/styles';
 import { Column } from 'models/table/column.model';
 import { Data } from 'models/table/data.model';
 
-function createData(
-  code: string,
-  price: number,
-  date: string,
-  cashback: number,
-  cashback_value: number,
-  status: string,
-): Data {
-  return { code, price, date, cashback, cashback_value, status };
-}
-
-const rows = [
-  createData('323DSDV3', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV2', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV1', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV11', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV54', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV322', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV244', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-  createData('323DSDV9', 135.5, '30/06/2020', 15, 20, 'Em analise'),
-];
-
 const columns: Column[] = [
   { id: 'code', label: 'Código', minWidth: 70 },
   {
@@ -93,7 +71,7 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
   };
 
   useEffect(() => {
-    // getListPurchases();
+    getListPurchases();
   }, [getListPurchases]);
 
   return (
@@ -127,7 +105,7 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                {purchases.purchases.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: Data) => {
                   return (
                     <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                       {columns.map(column => {
@@ -144,10 +122,11 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
               </TableBody>
             </Table>
           </TableContainer>
+
           <TablePagination
             rowsPerPageOptions={[10, 25, 100]}
             component="div"
-            count={rows.length}
+            count={purchases.purchases.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onChangePage={handleChangePage}
