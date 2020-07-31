@@ -1,6 +1,6 @@
-import { createStyles, Theme } from '@material-ui/core/styles';
+import { createStyles } from '@material-ui/core/styles';
 
-export const materialStyles = createStyles((theme: Theme) => ({
+export const materialStyles = createStyles((theme: any) => ({
   root: {
     maxWidth: 600,
     width: '100%',
@@ -13,6 +13,7 @@ export const materialStyles = createStyles((theme: Theme) => ({
     fontSize: 18,
     textAlign: 'center',
     color: '#007e78',
+    margin: '0 auto',
 
     '& h2': {
       fontWeight: 300,
@@ -20,13 +21,43 @@ export const materialStyles = createStyles((theme: Theme) => ({
     },
 
     [theme.breakpoints.down('sm')]: {
-      width: '70%',
+      width: '100%',
       left: 0,
+      padding: 0,
 
       '& h2': {
         fontWeight: 300,
         fontSize: 20,
       },
+    },
+  },
+
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    fontSize: 20,
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 30,
+
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
+
+  title: {
+    fontSize: 30,
+    display: 'flex',
+    alignItems: 'center',
+    fontFamily: 'Ubuntu',
+    color: theme.palette.primary.main,
+
+    '& .MuiSvgIcon-root': {
+      marginRight: 10,
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 26,
     },
   },
 
@@ -61,7 +92,7 @@ export const materialStyles = createStyles((theme: Theme) => ({
 
   button: {
     borderRadius: 15,
-    width: 180,
+    width: 220,
     fontSize: 13,
     padding: 10,
     margin: '20px 0',
@@ -75,6 +106,13 @@ export const materialStyles = createStyles((theme: Theme) => ({
     margin: '5px 0 20px',
   },
 
+  successContainer: {
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   successText: {
     position: 'relative',
     top: '-120px',
@@ -84,7 +122,7 @@ export const materialStyles = createStyles((theme: Theme) => ({
 
   buttonSuccess: {
     borderRadius: 15,
-    width: 180,
+    width: 230,
     fontSize: 13,
     padding: 10,
     margin: '20px 0',

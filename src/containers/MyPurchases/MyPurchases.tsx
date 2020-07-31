@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Material
 import { withStyles } from '@material-ui/core';
@@ -14,55 +14,27 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import ClearAllRoundedIcon from '@material-ui/icons/ClearAllRounded';
 
+// Styles
 import { materialStyles } from './styles/styles';
 
 // Models
 import { Column } from 'models/table/column.model';
 import { Data } from 'models/table/data.model';
 
-const columns: Column[] = [
-  { id: 'code', label: 'Código', minWidth: 70 },
-  {
-    id: 'price',
-    label: 'Valor',
-    align: 'center',
-    minWidth: 70,
-    format: (value: number) =>
-      value.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' }),
-  },
-  {
-    id: 'date',
-    label: 'Data',
-    minWidth: 70,
-    align: 'center',
-  },
-  {
-    id: 'cashback',
-    label: '% de cashback',
-    minWidth: 70,
-    align: 'center',
-    format: (value: number) => `${value}%`,
-  },
-  {
-    id: 'cashback_value',
-    label: 'Valor do cashback',
-    minWidth: 70,
-    align: 'center',
-    format: (value: number) =>
-      value.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' }),
-  },
-  {
-    id: 'status',
-    label: 'Status',
-    minWidth: 70,
-    align: 'center',
-  },
-];
+import { Columns } from './assets/columns';
 
 const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
+  const columns: Column[] = Columns;
+
+  useEffect(() => {
+    getListPurchases();
+  }, [getListPurchases]);
+
+  // States
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
+  // Handlers
   const handleChangePage = (event: unknown, newPage: number) => setPage(newPage);
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,9 +42,16 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
     setPage(0);
   };
 
-  useEffect(() => {
-    getListPurchases();
-  }, [getListPurchases]);
+  const countCashback = (list: Column[]) => {
+    // Counting only items with status "aprovado"
+    const result = list
+      .filter((item: any) => item.status === 'aprovado')
+      .map((item: any) => item.cashback_value)
+      .reduce((prev, cur) => prev + cur)
+      .toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' });
+
+    return result;
+  };
 
   return (
     <>
@@ -84,7 +63,11 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
           Cashback acumulado:
           <Chip
             label={
-              purchases.fetching ? <CircularProgress size={15} className={classes.loadingCashback} /> : 'R$ 1.025,00'
+              purchases.fetching ? (
+                <CircularProgress size={15} className={classes.loadingCashback} />
+              ) : (
+                countCashback(purchases.purchases)
+              )
             }
             color="primary"
           />
@@ -105,20 +88,18 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {purchases.purchases.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: Data) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                      {columns.map(column => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format ? column.format(value) : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
+                {purchases.purchases.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: Data) => (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code} className={classes.table}>
+                    {columns.map(column => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format ? column.format(value) : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

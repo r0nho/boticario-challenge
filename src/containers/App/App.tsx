@@ -7,13 +7,6 @@ import { RoutersApp } from './../../routes';
 import Sidebar from 'components/Sidebar';
 import { AppWrapper } from './styles';
 
-interface USER {
-  token: string;
-  name: string;
-  cpf: string;
-  email: string;
-}
-
 class App extends Component<any, any> {
   render() {
     const { location, user, setToken, unauthenticate } = this.props;

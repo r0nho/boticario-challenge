@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'MuseoModerno', cursive;
+        font-family: 'Ubuntu', cursive;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -44,6 +44,12 @@ const GlobalStyle = createGlobalStyle`
         color: white;
     }
 
+
+    @media (max-width: 1000px) {
+        body, html {
+            background: white;
+        }
+    }
 `;
 
 export default GlobalStyle;

@@ -5,6 +5,7 @@ import { Switch, Route, Redirect, Router } from 'react-router-dom';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import RegisterPurchase from 'pages/RegisterPurchase';
 
 const NotFoundRedirect = () => <Redirect to="/login" />;
 const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
@@ -41,7 +42,7 @@ export const RoutersApp = () => (
   <Router history={history}>
     <Switch>
       <PrivateRoute path="/dashboard/home" component={Home} />
-      <PrivateRoute path="/dashboard/register" component={Register} />
+      <PrivateRoute path="/dashboard/register" component={RegisterPurchase} />
       <PublicRoute path="/login" component={Login} />
       <PublicRoute path="/register" component={Register} />
       <PublicRoute path="*" render={NotFoundRedirect} />

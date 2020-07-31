@@ -17,16 +17,13 @@ export const { Types, Creators } = createActions({
   fetching: null,
 });
 
-export const getListPurchases = (payload: object) => {
+export const getListPurchases = () => {
   return (dispatch: Function) => {
     dispatch({ type: Types.FETCHING, isFetching: true });
 
     getPurchases()
       .then((res: { purchases: PURCHASE[] }) => {
         dispatch({ type: Types.SET_PURCHASES, list: res.purchases });
-      })
-      .catch((error: any) => {
-        console.log(error);
       })
       .finally(() => {
         dispatch({ type: Types.FETCHING, isFetching: false });

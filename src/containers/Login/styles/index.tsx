@@ -1,6 +1,6 @@
-import { createStyles } from '@material-ui/core/styles';
+import { createStyles, Theme } from '@material-ui/core/styles';
 
-export const materialStyles = createStyles((theme: any) => ({
+export const materialStyles = createStyles((theme: Theme) => ({
   root: {
     maxWidth: 300,
     width: '100%',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import history from 'utils/history';
 import { Link } from 'react-router-dom';
 
@@ -24,15 +24,34 @@ import Logo from 'assets/images/logo-white.svg';
 import { materialStyles } from './styles/styles';
 
 const Sidebar = ({ user, classes, logout }: any) => {
+  const [position, setPosition] = useState<'left' | 'top'>('left');
+
   const logoutHandler = () => {
     logout();
     history.push('/login');
   };
 
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  });
+
+  const handleResize = () => {
+    const wWidth = window.innerWidth;
+
+    if (wWidth < 1000 && position === 'left') {
+      setPosition('top');
+    }
+
+    if (wWidth >= 1000 && position === 'top') {
+      setPosition('left');
+    }
+  };
+
   return (
     <>
       <Drawer
-        anchor="left"
+        anchor={position}
         variant="permanent"
         elevation={5}
         PaperProps={{ elevation: 8 }}
@@ -43,7 +62,7 @@ const Sidebar = ({ user, classes, logout }: any) => {
 
         <Divider />
 
-        <Grid container>
+        <Grid container className={classes.profile}>
           <Grid item xs={12}>
             <div className={classes.profile}>
               <List>
@@ -66,13 +85,13 @@ const Sidebar = ({ user, classes, logout }: any) => {
         <Divider />
         <div className={classes.list}>
           <List component="nav">
-            <ListItem button component={Link} to="/dashboard/home">
+            <ListItem button component={Link} to="/dashboard/register">
               <ListItemIcon className={classes.icon}>
                 <PostAddRoundedIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary="Cadastrar compra" />
             </ListItem>
-            <ListItem button component={Link} to="/dashboard/register">
+            <ListItem button component={Link} to="/dashboard/home">
               <ListItemIcon className={classes.icon}>
                 <ClearAllRoundedIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
