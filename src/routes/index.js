@@ -7,7 +7,6 @@ import Login from 'pages/Login';
 import Register from 'pages/Register';
 import RegisterPurchase from 'pages/RegisterPurchase';
 
-const NotFoundRedirect = () => <Redirect to="/login" />;
 const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
   return (
     <Route
@@ -41,11 +40,11 @@ const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
 export const RoutersApp = () => (
   <Router history={history}>
     <Switch>
+      <PublicRoute path="/" exact component={Login} />
       <PrivateRoute path="/dashboard/home" component={Home} />
       <PrivateRoute path="/dashboard/register" component={RegisterPurchase} />
       <PublicRoute path="/login" component={Login} />
       <PublicRoute path="/register" component={Register} />
-      <PublicRoute path="*" render={NotFoundRedirect} />
     </Switch>
   </Router>
 );

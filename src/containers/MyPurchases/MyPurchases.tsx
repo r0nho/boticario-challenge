@@ -23,7 +23,7 @@ import { Data } from 'models/table/data.model';
 
 import { Columns } from './assets/columns';
 
-const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
+const ListMyPurchases = ({ classes, getListPurchases, purchases, updatePurchase }: any) => {
   const columns: Column[] = Columns;
 
   useEffect(() => {
@@ -42,16 +42,22 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
     setPage(0);
   };
 
-  const countCashback = (list: Column[]) => {
+  function countCashback(list: Column[]) {
     // Counting only items with status "aprovado"
-    const result = list
-      .filter((item: any) => item.status === 'aprovado')
-      .map((item: any) => item.cashback_value)
-      .reduce((prev, cur) => prev + cur)
-      .toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' });
+    let result = [];
+
+    if (list.length > 0) {
+      result = list
+        .filter((item: any) => item.status === 'aprovado')
+        .map((item: any) => item.cashback_value)
+        .reduce((prev, cur) => prev + cur)
+        .toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' });
+    }
 
     return result;
-  };
+  }
+
+  const handleStatusChange = (code: string, status: string) => updatePurchase({ code, status });
 
   return (
     <>
@@ -88,18 +94,22 @@ const ListMyPurchases = ({ classes, getListPurchases, purchases }: any) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {purchases.purchases.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: Data) => (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code} className={classes.table}>
-                    {columns.map(column => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format ? column.format(value) : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                ))}
+                {purchases.purchases
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((purchase: Data) => (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={purchase.code} className={classes.table}>
+                      {columns.map(column => {
+                        const value = purchase[column.id];
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {column.format
+                              ? column.format(value, (status: string) => handleStatusChange(purchase.code, status))
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>

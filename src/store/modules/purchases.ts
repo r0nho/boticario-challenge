@@ -1,12 +1,13 @@
 import { createActions, createReducer } from 'reduxsauce';
 import { getPurchases } from 'services/purchases';
+import { Data } from 'models/table/data.model';
 
 /**
  * Interfaces
  */
 interface PURCHASE {
   fetching: boolean;
-  purchases: PURCHASE[];
+  purchases: Data[];
 }
 
 /**
@@ -14,6 +15,7 @@ interface PURCHASE {
  */
 export const { Types, Creators } = createActions({
   setPurchases: ['purchases'],
+  updatePurchase: ['newPurchase'],
   fetching: null,
 });
 
@@ -46,6 +48,21 @@ const setPurchaseList = (state: PURCHASE = INITIAL_STATE, action: any) => {
   };
 };
 
+const updatePurchaseItem = (state: PURCHASE = INITIAL_STATE, action: any) => {
+  const purchases = state.purchases.map((item: Data) => {
+    if (item.code === action.newPurchase.code) {
+      item.status = action.newPurchase.status;
+    }
+
+    return item;
+  });
+
+  return {
+    ...state,
+    purchases,
+  };
+};
+
 const setLoading = (state: PURCHASE = INITIAL_STATE, action: any) => {
   return {
     ...state,
@@ -55,5 +72,6 @@ const setLoading = (state: PURCHASE = INITIAL_STATE, action: any) => {
 
 export default createReducer(INITIAL_STATE, {
   [Types.SET_PURCHASES]: setPurchaseList,
+  [Types.UPDATE_PURCHASE]: updatePurchaseItem,
   [Types.FETCHING]: setLoading,
 });

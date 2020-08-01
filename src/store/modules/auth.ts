@@ -40,9 +40,6 @@ export const login = (payload: object) => {
 
         push('/dashboard/home');
       })
-      .catch((error: any) => {
-        console.log(error);
-      })
       .finally(() => {
         dispatch({ type: Types.FETCHING, isFetching: false });
       });
@@ -62,9 +59,6 @@ export const register = (payload: object) => {
           token,
           type: TypesUser.SET_TOKEN,
         });
-      })
-      .catch(({ response }: any) => {
-        console.log(response);
       })
       .finally(() => {
         dispatch({ type: Types.FETCHING, isFetching: false });

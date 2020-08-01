@@ -58,7 +58,7 @@ const LoginBox = ({ classes, auth, register }: any) => {
       <>
         <h2>Faça seu cadastro</h2>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
           <Controller
             as={TextField}
             name="fullname"
@@ -69,6 +69,7 @@ const LoginBox = ({ classes, auth, register }: any) => {
             error={!!errors.fullname}
             helperText={errors.fullname?.message}
             label="Nome completo"
+            placeholder="Nome Completo"
             variant="outlined"
           />
 
@@ -82,6 +83,7 @@ const LoginBox = ({ classes, auth, register }: any) => {
             control={control}
             rules={emailRules}
             defaultValue=""
+            placeholder="E-mail"
             variant="outlined"
           />
 
@@ -95,6 +97,7 @@ const LoginBox = ({ classes, auth, register }: any) => {
             control={control}
             rules={cpfRules}
             defaultValue=""
+            placeholder="Cpf"
             variant="outlined"
           />
 
@@ -108,7 +111,8 @@ const LoginBox = ({ classes, auth, register }: any) => {
             className={classes.inputs}
             error={!!errors.password}
             helperText={errors.password?.message}
-            label="Password"
+            label="Senha"
+            placeholder="Senha"
             variant="outlined"
           />
 

@@ -39,6 +39,8 @@ export const Columns: Column[] = [
     label: 'Status',
     minWidth: 70,
     align: 'center',
-    format: (value: 'aprovado' | 'reprovado' | 'em validação') => <Chip label={value} status={value} />,
+    format: (value: 'aprovado' | 'reprovado' | 'em validação', callback: any) => (
+      <Chip label={value} onChangeStatus={callback} status={value} />
+    ),
   },
 ];

@@ -36,12 +36,13 @@ const LoginBox = ({ classes, auth, login }: any) => {
   return (
     <Card elevation={5} className={classes.root}>
       <h2>Login do Revendedor</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
         <Controller
           as={TextField}
           name="email"
           className={classes.inputs}
           label="E-mail"
+          placeholder="E-mail"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -64,6 +65,7 @@ const LoginBox = ({ classes, auth, login }: any) => {
           rules={passwordRules}
           defaultValue=""
           type="password"
+          placeholder="Senha"
           className={classes.inputs}
           InputProps={{
             endAdornment: (

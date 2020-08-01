@@ -81,7 +81,7 @@ const RegisterPurchase = ({ classes }: any) => {
       </div>
 
       <div className={classes.root}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
           <Controller
             as={TextField}
             name="code"
@@ -165,7 +165,7 @@ const RegisterPurchase = ({ classes }: any) => {
       </div>
     </>
   ) : (
-    <div className={classes.successContainer}>
+    <div className={classes.successContainer} data-testid="success">
       <Lottie options={lottieOptions} height={400} width={400} />
       <h2 className={classes.successText}>Compra cadastrada com sucesso!</h2>
 

@@ -6,10 +6,7 @@
 
 <br />
 
-### `npm server`
-
-Runs the api server.<br />
-Open [http://localhost:3004](http://localhost:3004) to view it in the browser.
+[View demo (deployed with surge)](http://romulo-challenge-boticario.surge.sh/)
 
 ### `npm start`
 
@@ -30,3 +27,19 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
+
+### Observações
+
+- React 16
+- Redux with Duck patterns && reduxsauce
+- Thunk middleware
+- TypeScript (TSX)
+- Jest
+- Material UI && Styled Components
+- JWT (decode)
+
+Acabei testando apenas os componentes/containers que eu achei que faziam sentido,pois estou usando Material UI.
+Se eu tivesse um pouco mais de tempo, teria implementado um Error Handler (interceptor) para erros de request.
+Como solicitado, todos os dados foram mockados em uma api mock.
+
+E-mail: ronho@hotmail.co.uk
